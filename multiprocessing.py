@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import multiprocessing as mp
+from pathos.multiprocessing import ProcessingPool as Pool
 
 
 class multiprocessor:
@@ -24,10 +25,11 @@ class multiprocessor:
             # split DataFrame into a list of smaller DataFrames
             self.df_split = np.array_split(df, self.partitions, axis=0)
             # create the multiprocessing pool
-            pool = mp.Pool(self.cores)
+            pool = Pool(self.cores)
             # process the DataFrame by mapping function to each df across the pool
             df = pd.concat(pool.map(func, self.df_split), axis=0)
             # close down the pool and join
             pool.close()
             pool.join()
+            pool.clear()
             return df
