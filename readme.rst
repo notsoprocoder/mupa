@@ -35,16 +35,23 @@ Code example:
     pmp = pmp(num_parts = 8, num_cores = 2)
     df = pmp.parallel_apply(df, foo)
 
-If you are strugging with performance on large data frames: I would recommend reviewing the pathos packages directly.
+If you are strugging with performance on large data frames: I would recommend reviewing the pathos packagedirectly.
 Similarly implementing a loop function using C-Python.
 
 At some point, I will consider implementing a C-python function.
 
 ## TO DO:
+
 ### complete unit-tests
+
 ### Testing can be done via PyTest - run in terminal: pytest filename.py
+
 ### Build Multi Processing facilitator closure func
+
 ### Assess performance improvements
+
 ### Build Multi Threading
+
 ### Build Fast Loops
+
 ### Collect data on performance - measure each functions performance on dataframes of increasing sizes.
