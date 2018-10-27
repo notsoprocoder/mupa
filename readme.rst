@@ -1,19 +1,9 @@
-#Parallel Pandas
-
-The aim of this package is provide a tool kit for Pandas, in particular for processing large DataFrames containing strings.
+The aim of this class/package is provide a tool kit mapping a multiprocessing pool to a pandas dataframe with a  given function).
 
 For installation ensure that requirements.txt has been installed prior to import. Run:
     pip install -r requirements.txt.
 
-'pip install -r requirements.txt'
-
 The mupa directory needs to sit within your project and imports as a python package.
-
-Mupa will soon implements 3 tools to circumnavigate the lack of vectorisation of Pandas DataFrames.
-These are:
-    - Multi-Processing
-    - Multi-Threading
-    - Cython Fast Loops
 
 So far the multi-processing class has been built and I am in the process of building several utility functions and writing an article discussing processing improvements. Then I will look at Threading and Fast Loops.
 
@@ -24,8 +14,7 @@ The underlying code was taken from maxpowerwastaken; the logic and performance b
 https://maxpowerwastaken.github.io/blog/multiprocessing-with-pandas/
 http://chriskiehl.com/article/parallelism-in-one-line/
 
-
-The pandas_mp facility needs to be initialised as a class.
+The multi-processing facility needs to be initialised as a class.
 When initialising the class you have the option to assign the number of partitions and the number of cores.
 If unspecified these will default to the number of cores in the machines.
 parallel_apply will process your function; it takes two arguments the DataFrame and a function.
@@ -35,7 +24,7 @@ Code example:
 
     import pandas as pd
 
-    import parallel_pandas.multiprocessing as pmp
+    import multiprocessing as pmp
 
     df = pd.read_csv('some_data.csv')
 
@@ -44,9 +33,12 @@ Code example:
         return df
 
     pmp = pmp(num_parts = 8, num_cores = 2)
-
     df = pmp.parallel_apply(df, foo)
 
+If you are strugging with performance on large data frames: I would recommend reviewing the pathos packages directly.
+Similarly implementing a loop function using C-Python.
+
+At some point, I will consider implementing a C-python function.
 
 ## TO DO:
 ### complete unit-tests
