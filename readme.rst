@@ -14,6 +14,8 @@ The underlying code was taken from maxpowerwastaken; the logic and performance b
 https://maxpowerwastaken.github.io/blog/multiprocessing-with-pandas/
 http://chriskiehl.com/article/parallelism-in-one-line/
 
+Using the pathos library this allows you to map static methods and lambdas, under the hood this is done by Dill-ing the function.
+
 The multi-processing facility needs to be initialised as a class.
 When initialising the class you have the option to assign the number of partitions and the number of cores.
 If unspecified these will default to the number of cores in the machines.
