@@ -1,5 +1,10 @@
 The aim of this class/package is provide a tool kit mapping a multiprocessing pool to a pandas dataframe with a  given function).
 
+###NOTE###
+no performance benefits are being yielded yet as illustrated by the notebook.
+df is a dataframe of movie quotes and some simple functions are not outperforming .apply().
+This needs to be reviewed.
+
 For installation ensure that requirements.txt has been installed prior to import. Run:
     pip install -r requirements.txt.
 
