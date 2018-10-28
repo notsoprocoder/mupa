@@ -27,7 +27,7 @@ class multiprocessor:
             # create the multiprocessing pool
             pool = Pool(self.cores)
             # process the DataFrame by mapping function to each df across the pool
-            df = pd.concat(pool.map(func, self.df_split), axis=0)
+            df = pd.concat(pool.map(func, self.df_split), axis=0).copy()
             # close down the pool and join
             pool.close()
             pool.join()
